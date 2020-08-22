@@ -1,0 +1,23 @@
+!!! 
+%html
+  %head
+    %meta{"charset":"UTF-8"}
+    %link{"href": "style.css", "rel": "stylesheet"}
+    %title ChatSpace
+  %body
+  .side-bar
+    .side-header
+      .side-header__box
+        %p.side-header__box__name masa
+        %ul.side-header__box__icon
+          %li.icon__edit
+            = link_to "#", class: "Contents__btn" do
+              = icon('far', 'edit', class: 'edit')
+          %li.icon__creation
+            = link_to "#", class: "Contents__btn" do
+              = icon('fas', 'cog', class: 'creation')
+
+    .side-groups
+      %ul.side-groups__list
+        %li.group-name techcamp
+        %li.new-message まだメッセージがありません。
