@@ -114,6 +114,7 @@
     height: calc(100vh - 190px);
     width: 100vw;
     padding: 35px 0 0 40px;
+    overflow: scroll;
     .main-message {
         padding-bottom: 46px;
       &__list {
