@@ -1,8 +1,27 @@
 $(function(){
   function buildHTML(message){
-  if ( message.image ) {
+    if ( message.image ) {
+        let html =
+        `<div class="main-message" data-message-id=${message.id}>
+        <div class="main-message__list">
+          <div class="main-message__list__name">
+            ${message.user_name}
+          </div>
+          <div class="main-message__list__date">
+            ${message.created_at}
+          </div>
+        </div>
+        <div class="main-message__comment">
+          <p class="Message__content">
+          ${message.content}
+          </p>
+          <img class="Message__image" src="${message.image}">
+        </div>
+      </div>`
+    return html;
+    } else {
       let html =
-      `<div class="main-message">
+      `<div class="main-message" data-message-id=${message.id}>
       <div class="main-message__list">
         <div class="main-message__list__name">
           ${message.user_name}
@@ -15,29 +34,10 @@ $(function(){
         <p class="Message__content">
         ${message.content}
         </p>
-        <img class="Message__image" src="${message.image}">
       </div>
     </div>`
-  return html;
-  } else {
-    let html =
-    `<div class="main-message">
-    <div class="main-message__list">
-      <div class="main-message__list__name">
-        ${message.user_name}
-      </div>
-      <div class="main-message__list__date">
-        ${message.created_at}
-      </div>
-    </div>
-    <div class="main-message__comment">
-      <p class="Message__content">
-      ${message.content}
-      </p>
-    </div>
-  </div>`
-    return html;
-  };
+      return html;
+    };
   }
 
   $('.main-form__message').on('submit', function(e){
@@ -61,6 +61,7 @@ $(function(){
     })
     .fail(function() {
       alert("メッセージ送信に失敗しました");
+      $('.Form__submit').prop("disabled", false);
     });
   });
 });
